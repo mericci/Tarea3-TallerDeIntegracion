@@ -41,10 +41,11 @@ class ExchangeDetail extends Component {
                             <TickerDetail
                                 key = {company.company}
                                 ticker = {company}
-                                prueba = {this.props.prueba[company.ticker]}
+                                prueba = {this.props.prueba}
                                 big = {this.props.bigs[company.ticker]}
                                 small = {this.props.smalls[company.ticker]}
                                 last = {this.props.lasts[company.ticker]}
+                                volume = {this.props.volume[company.ticker]}
                             /> 
                         )
                     })}

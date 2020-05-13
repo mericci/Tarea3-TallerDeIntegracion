@@ -19,7 +19,8 @@ class App extends Component{
       prueba: [],
       big_updates: {},
       small_updates: {},
-      last_updates: {}
+      last_updates: {},
+      total_volume: {}
 
     };    
   }
@@ -74,6 +75,7 @@ class App extends Component{
             this.setState({big_updates: {[stock.ticker]: 0, ...this.state.big_updates}})
             this.setState({small_updates: {[stock.ticker]: Infinity, ...this.state.small_updates}})
             this.setState({last_updates: {[stock.ticker]: 0, ...this.state.last_updates}})
+            this.setState({total_volume: {[stock.ticker]: 0, ...this.state.total_volume}})
           })
           
         
@@ -102,25 +104,23 @@ class App extends Component{
           this.state.small_updates[data.ticker] = data.value;
         }
 
-    
-
         this.setState({prueba: [{date: data.time, value: data.value }, ...this.state.prueba] })
 
         //console.log(this.state.prueba)
 
         
-        //console.log(this.state.updates)
+        
 
         
 
       });
 
       socket.on('BUY', (data) => {
-        //console.log(data);
+        this.state.total_volume[data.ticker] += data.volume;
       });
 
       socket.on('SELL', (data) => {
-        //console.log(data);
+        this.state.total_volume[data.ticker] += data.volume;
       });
   }
 
@@ -140,6 +140,7 @@ class App extends Component{
                   bigs = {this.state.big_updates}
                   smalls = {this.state.small_updates}
                   lasts = {this.state.last_updates}
+                  volume = {this.state.total_volume}
                 />
               </div>
             )

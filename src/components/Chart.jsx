@@ -46,9 +46,6 @@ class Chart extends Component {
     componentDidUpdate(prevProps) {
 
         if (this.props.prueba !== prevProps.prueba) {
-            // let charts = echarts.init(document.getElementById('chart'));
-            // this.option.series[0].data = this.props.time;
-            // charts.setOption(this.option);
             this.chart.data = this.props.data
 
         }
