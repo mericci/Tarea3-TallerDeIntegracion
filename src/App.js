@@ -20,7 +20,8 @@ class App extends Component{
       big_updates: {},
       small_updates: {},
       last_updates: {},
-      total_volume: {}
+      total_volume: {},
+      all_exchange_volume: 0
 
     };    
   }
@@ -65,8 +66,11 @@ class App extends Component{
                       buy: [],
                       sell: [],
                       ticker: tick,
+          
                     }
                   }),
+                  buy_volume: 0,
+                  sell_volume: 0,
               })
             })
           });
@@ -116,11 +120,30 @@ class App extends Component{
       });
 
       socket.on('BUY', (data) => {
+        this.state.all_exchange_volume += data.volume;
         this.state.total_volume[data.ticker] += data.volume;
+        var exchange_input = this.state.stock_exchange[data.ticker];
+        this.state.exchanges.map(exchange => {
+          if(exchange.name === exchange_input) {
+            if(exchange.name === exchange_input) {
+              exchange.buy_volume += data.volume
+            }
+          }
+        });
+      
       });
 
       socket.on('SELL', (data) => {
+        this.state.all_exchange_volume += data.volume;
         this.state.total_volume[data.ticker] += data.volume;
+        var exchange_input = this.state.stock_exchange[data.ticker];
+        this.state.exchanges.map(exchange => {
+          if(exchange.name === exchange_input) {
+              exchange.sell_volume += data.volume
+            }
+        
+          }
+        );
       });
   }
 
@@ -141,6 +164,7 @@ class App extends Component{
                   smalls = {this.state.small_updates}
                   lasts = {this.state.last_updates}
                   volume = {this.state.total_volume}
+                  total_volume = {this.state.all_exchange_volume}
                 />
               </div>
             )

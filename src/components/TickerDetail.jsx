@@ -37,7 +37,6 @@ class TickerDetail extends Component {
     
         }
         if (this.props.last !== prevProps.last) {
-            console.log(prevProps.last - this.props.last)
             const porc_var = Math.round(((this.props.last - prevProps.last)/prevProps.last)*10000)/100
             this.setState({
                 variation: porc_var + "%"
