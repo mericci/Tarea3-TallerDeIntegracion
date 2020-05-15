@@ -15,7 +15,7 @@ class App extends Component{
     this.state = {
       stock_exchange: {},
       exchanges: [],
-      is_loading: true,
+      is_loading: false,
       prueba: [],
       big_updates: {},
       small_updates: {},
@@ -24,6 +24,10 @@ class App extends Component{
       all_exchange_volume: 0
 
     };    
+  }
+
+  wait = () => {
+
   }
 
   componentDidMount() {
@@ -145,6 +149,7 @@ class App extends Component{
           }
         );
       });
+      
   }
 
 
@@ -152,10 +157,9 @@ class App extends Component{
   render() {
     return(
       <div className="App">
-        <div className="exchanges">
           {this.state.exchanges.map(exchange => {
             return(
-              <div className="exchange col-md-12" key={exchange.name}>
+              <div className="exchange" key={exchange.name}>
                 <ExchangeDetail
                   key={exchange.name} 
                   exchange = {exchange}
@@ -169,7 +173,6 @@ class App extends Component{
               </div>
             )
           })}
-        </div>
 
       </div>
     );

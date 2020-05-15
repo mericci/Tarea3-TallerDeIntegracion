@@ -41,7 +41,6 @@ class Chart extends Component {
     
         this.chart = chart;
     };
-    
 
     componentDidUpdate(prevProps) {
 
@@ -53,13 +52,9 @@ class Chart extends Component {
 
         
     render() {
-    
-        
-        return (
-            <div>
-                <div id={this.props.company} style={{ width: "100%", height: '300px' }}></div>
 
-            </div>
+        return (
+            <div id={this.props.company} style={{ width: "100%", height: '300px' }}></div>
         );
     }
 

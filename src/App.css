@@ -9,27 +9,26 @@ th, td {
   text-align: center;
 }
 
+.table-tickers {
+  border: 1px transparent;
+}
+
 h3 {
+}
+
+#root {
+  background-color: #282c34; 
 }
 
 .App {
   background-color: #282c34; 
   color:rgb(245, 245, 245);
-  justify-content: center; 
-  
-  
-}
-.exchanges {
-  background-color: #282c34;
-  align-items: center;
-  /* padding: 5rem; */
-
 }
 
 .exchange {
   background-color: #282c34;
-  width: 10%;
   align-items: center;
+  margin: 5rem auto;
 }
 
 .ticker{
@@ -48,15 +47,11 @@ h3 {
   flex-direction: row;
 }
 
-.company {
-  padding: 4rem 0;
-}
 
 .box-body{max-height:300px;overflow:auto}
 
 .border-right{
   border-right:1px;
-  margin: 2rem 1rem 2rem 2rem;
   align-items: center;
   text-align: center; 
   
@@ -64,18 +59,12 @@ h3 {
 
 .border-left{
   border-left:1px;
-  border: 1px solid;
-  border-radius: 1.1rem;
-  margin: 2rem 3rem 2rem 1rem;
   align-items: stretch;
   align-content: center; 
 
 }
 
-.box{position:relative;border-radius:3px;border-top:3px solid #d2d6de;margin-bottom:20px;width:100%;box-shadow:0 1px 1px rgba(0,0,0,0.1)}
-.box-default>.box-header{color:#444;background:#d2d6de;background-color:#d2d6de}
 .row {
-  margin-left: 20px;
   *zoom: 1;
 }
 

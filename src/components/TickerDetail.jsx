@@ -48,7 +48,7 @@ class TickerDetail extends Component {
     render(){
         return (
             <div className="row ticker">
-                <div className="col-md-6 border-right company">
+                <div className="col-md-12 border-right company">
         
 
                 <table>
