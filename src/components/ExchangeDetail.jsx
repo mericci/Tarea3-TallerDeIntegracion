@@ -15,32 +15,32 @@ class ExchangeDetail extends Component {
         };    
     }
     
-    componentDidMount(){
-        this.setState({
-            buy_volume: this.props.exchange.buy_volume,
-            sell_volume: this.props.exchange.sell_volume,
-            total_volume: this.props.exchange.buy_volume + this.props.exchange.sell_volume,
-            actions_count: this.props.exchange.stocks.length,
-            participation: 0
-        })
+    // componentDidMount(){
+    //     this.setState({
+    //         buy_volume: this.props.exchange.buy_volume,
+    //         sell_volume: this.props.exchange.sell_volume,
+    //         total_volume: this.props.exchange.buy_volume + this.props.exchange.sell_volume,
+    //         actions_count: this.props.exchange.stocks.length,
+    //         participation: 0
+    //     })
 
-    }
+    // }
 
-    componentDidUpdate(prevProps){
-        if (this.props.prueba !== prevProps.prueba) {
-            this.setState({
-                buy_volume: this.props.exchange.buy_volume,
-                sell_volume: this.props.exchange.sell_volume,
-                total_volume: this.props.exchange.buy_volume + this.props.exchange.sell_volume,
-                actions_count: this.props.exchange.stocks.length,
-            })
-            this.setState({
-                participation: Math.round((this.state.total_volume/this.props.total_volume)*10000)/100
-            })
+    // componentDidUpdate(prevProps){
+    //     if (this.props.volume !== prevProps.volume) {
+    //         this.setState({
+    //             buy_volume: this.props.exchange.buy_volume,
+    //             sell_volume: this.props.exchange.sell_volume,
+    //             total_volume: this.props.exchange.buy_volume + this.props.exchange.sell_volume,
+    //             actions_count: this.props.exchange.stocks.length,
+    //         })
+    //         this.setState({
+    //             participation: Math.round((this.state.total_volume/this.props.total_volume)*10000)/100
+    //         })
     
-        }
+    //     }
 
-    }
+    // }
     
     render(){
         return (
@@ -57,11 +57,11 @@ class ExchangeDetail extends Component {
     
                         </tr>
                         <tr>
-                            <th>{this.state.buy_volume}</th>
-                            <th>{this.state.sell_volume}</th>
-                            <th>{this.state.total_volume}</th>
-                            <th>{this.state.actions_count}</th>
-                            <th>{this.state.participation}</th>
+                            <th>{this.props.exchange.buy_volume}</th>
+                            <th>{this.props.exchange.sell_volume}</th>
+                            <th>{this.props.exchange.buy_volume + this.props.exchange.sell_volume}</th>
+                            <th>{this.props.exchange.stocks.length}</th>
+                            <th>{Math.round(((this.props.exchange.buy_volume + this.props.exchange.sell_volume)/this.props.total_volume)*10000)/100}</th>
     
                         </tr>
                     </table>

@@ -48,44 +48,47 @@ class TickerDetail extends Component {
     render(){
         return (
             <div className="row ticker">
-                <div className="col-md-8 border-right company">
-                    <h3>{this.props.ticker.company}</h3>
-                    <Chart 
-                        key={this.props.ticker.company}
-                        data = {this.props.ticker.update}
-                        time = {this.props.ticker.update_time}
-                        title = {this.props.ticker.company}
-                        company = {this.props.ticker.company}
-                        prueba = {this.props.prueba}
-                    />
-                </div>
+                <div className="col-md-6 border-right company">
+        
 
-
-
-                <div className="col-md-4 border-left company_data">
-                    <table>
+                <table>
+                    <tr>
+                
+                        
+                            <div className='title-table'>
+                                <h3>{this.props.ticker.company}</h3>
+                            </div>
+                        
+                    </tr>
+                    <tr>
+                        <div>
+                            <Chart 
+                                key={this.props.ticker.company}
+                                data = {this.props.ticker.update}
+                                time = {this.props.ticker.update_time}
+                                title = {this.props.ticker.company}
+                                company = {this.props.ticker.company}
+                                prueba = {this.props.prueba}
+                            />
+                        </div>
                         <tr>
-                            <th>Volumen Total Transado</th>
-                            <th>{this.state.volume}</th>
-                        </tr>
-                        <tr>
+                            <th>Volumen Total</th>
                             <th>Alto Histórico</th>
-                             <th>{this.state.big}</th>
-                        </tr>
-                        <tr>
                             <th>Bajo Histórico</th>
-                            <th>{this.state.small}</th>
-                        </tr>
-                        <tr>
                             <th>Último Precio</th>
-                            <th>{this.state.last}</th>
+                            <th>Variación (%)</th>
                         </tr>
                         <tr>
-                            <th>Variación (%)</th>
+                            <th>{this.props.volume}</th>
+                            <th>{this.state.big}</th>
+                            <th>{this.state.small}</th>
+                            <th>{this.state.last}</th>
                             <th>{this.state.variation}</th>
                         </tr>
-                            
-                    </table>
+                    </tr>
+                    
+                        
+                </table>
                 </div>
 
             </div>

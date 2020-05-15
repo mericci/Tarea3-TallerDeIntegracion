@@ -54,79 +54,11 @@ class Chart extends Component {
         
     render() {
     
-        // // let option = {
-        // //     title: {
-        // //         text: this.props.title,
-        // //         textStyle: {
-        // //             color: '#FFF'
-        // //         }
-        // //     },
-        // //     tooltip: {
-        // //         trigger: 'axis',
-        // //         // formatter: function (params) {
-        // //         //     params = params[0];
-        // //         //     var date = new Date(params.name);
-        // //         //     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
-        // //         // },
-        // //         axisPointer: {
-        // //             animation: false
-        // //         }
-        // //     },
-        // //     xAxis: {
-        // //         type: 'time',
-        // //         splitLine: {
-        // //             show: false
-        // //         },
-        // //         axisLine: {
-        // //             lineStyle: {
-        // //                 color: '#FFF'
-        // //             }
-        // //         }
-        // //     },
-        // //     yAxis: {
-        // //         type: 'value',
-        // //         boundaryGap: [0, '100%'],
-        // //         splitLine: {
-        // //             show: false
-        // //         },
-        // //         axisLine: {
-        // //             lineStyle: {
-        // //                 color: '#FFF'
-        // //             }
-        // //         }
-        // //     },
-        // //     series: [{
-        // //         name: 'CHART',
-        // //         type: 'line',
-        // //         showSymbol: false,
-        // //         hoverAnimation: false,
-        // //         data: this.props.data
-        // //     }]
-        // // };
-
-        // const setInterval = () => {
-        //     //console.log(this.boxRef)
-        //     let charts = echarts.init(document.getElementById('chart')); //ref={this.boxRef} this.boxRef.current
-        //     this.option.series[0].data = this.props.data;
-        
-        //     charts.setOption(this.option);
-        // }
         
         return (
             <div>
-                <div id={this.props.company} style={{ width: "90%", height: '300px' }}></div>
-                {/* <div id="chart" >
-                    <ReactEcharts
-                        ref={this.boxRef}
-                        option={this.option}
-                        style={{height: 360}}
-                        opts={{renderer: 'svg'}}
-                        onChartReady={setInterval}
-                        notMerge={true}
-                        lazyUpdate={true}
-    
-                    /> 
-                </div> */}
+                <div id={this.props.company} style={{ width: "100%", height: '300px' }}></div>
+
             </div>
         );
     }
