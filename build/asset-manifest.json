@@ -1,23 +1,31 @@
 {
   "files": {
-    "main.css": "/static/css/main.5f361e03.chunk.css",
-    "main.js": "/static/js/main.18e810d8.chunk.js",
-    "main.js.map": "/static/js/main.18e810d8.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.1a485d2f.js",
-    "runtime-main.js.map": "/static/js/runtime-main.1a485d2f.js.map",
-    "static/js/2.7564da71.chunk.js": "/static/js/2.7564da71.chunk.js",
-    "static/js/2.7564da71.chunk.js.map": "/static/js/2.7564da71.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.6e00853acb85b0c39fcfa3ab65f7047d.js": "/precache-manifest.6e00853acb85b0c39fcfa3ab65f7047d.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.5f361e03.chunk.css.map": "/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.7564da71.chunk.js.LICENSE.txt": "/static/js/2.7564da71.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg"
+    "main.css": "/mericci/Tarea3-TallerDeIntegracion/static/css/main.f70e9fb6.chunk.css",
+    "main.js": "/mericci/Tarea3-TallerDeIntegracion/static/js/main.38618576.chunk.js",
+    "main.js.map": "/mericci/Tarea3-TallerDeIntegracion/static/js/main.38618576.chunk.js.map",
+    "runtime-main.js": "/mericci/Tarea3-TallerDeIntegracion/static/js/runtime-main.74d67980.js",
+    "runtime-main.js.map": "/mericci/Tarea3-TallerDeIntegracion/static/js/runtime-main.74d67980.js.map",
+    "xlsx.js": "/mericci/Tarea3-TallerDeIntegracion/static/js/xlsx.a12b833b.chunk.js",
+    "xlsx.js.map": "/mericci/Tarea3-TallerDeIntegracion/static/js/xlsx.a12b833b.chunk.js.map",
+    "static/js/3.fb50e057.chunk.js": "/mericci/Tarea3-TallerDeIntegracion/static/js/3.fb50e057.chunk.js",
+    "static/js/3.fb50e057.chunk.js.map": "/mericci/Tarea3-TallerDeIntegracion/static/js/3.fb50e057.chunk.js.map",
+    "static/js/4.5a0cee0a.chunk.js": "/mericci/Tarea3-TallerDeIntegracion/static/js/4.5a0cee0a.chunk.js",
+    "static/js/4.5a0cee0a.chunk.js.map": "/mericci/Tarea3-TallerDeIntegracion/static/js/4.5a0cee0a.chunk.js.map",
+    "static/js/5.db5bbbe1.chunk.js": "/mericci/Tarea3-TallerDeIntegracion/static/js/5.db5bbbe1.chunk.js",
+    "static/js/5.db5bbbe1.chunk.js.map": "/mericci/Tarea3-TallerDeIntegracion/static/js/5.db5bbbe1.chunk.js.map",
+    "static/js/6.ec7e9232.chunk.js": "/mericci/Tarea3-TallerDeIntegracion/static/js/6.ec7e9232.chunk.js",
+    "static/js/6.ec7e9232.chunk.js.map": "/mericci/Tarea3-TallerDeIntegracion/static/js/6.ec7e9232.chunk.js.map",
+    "index.html": "/mericci/Tarea3-TallerDeIntegracion/index.html",
+    "precache-manifest.61aae07fc2df0d0fd831dd6e0c1b2e8d.js": "/mericci/Tarea3-TallerDeIntegracion/precache-manifest.61aae07fc2df0d0fd831dd6e0c1b2e8d.js",
+    "service-worker.js": "/mericci/Tarea3-TallerDeIntegracion/service-worker.js",
+    "static/css/main.f70e9fb6.chunk.css.map": "/mericci/Tarea3-TallerDeIntegracion/static/css/main.f70e9fb6.chunk.css.map",
+    "static/js/3.fb50e057.chunk.js.LICENSE.txt": "/mericci/Tarea3-TallerDeIntegracion/static/js/3.fb50e057.chunk.js.LICENSE.txt",
+    "static/js/5.db5bbbe1.chunk.js.LICENSE.txt": "/mericci/Tarea3-TallerDeIntegracion/static/js/5.db5bbbe1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.1a485d2f.js",
-    "static/js/2.7564da71.chunk.js",
-    "static/css/main.5f361e03.chunk.css",
-    "static/js/main.18e810d8.chunk.js"
+    "static/js/runtime-main.74d67980.js",
+    "static/js/3.fb50e057.chunk.js",
+    "static/css/main.f70e9fb6.chunk.css",
+    "static/js/main.38618576.chunk.js"
   ]
 }
