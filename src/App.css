@@ -9,11 +9,23 @@ th, td {
   text-align: center;
 }
 
-.table-tickers {
-  border: 1px transparent;
+.exchange-table{
+  border: 1px solid rgba(221, 221, 221, 0.315);
+  align-items: center;
+  /* border-collapse: collapse; */
 }
 
-h3 {
+.ticker-table{
+  border: 1px solid rgba(221, 221, 221, 0.315);
+  align-items: center;
+  /* border-collapse: collapse; */
+}
+
+.table-tickers {
+  border: 1px transparent;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  border-collapse: collapse;
 }
 
 #root {
@@ -23,13 +35,30 @@ h3 {
 .App {
   background-color: #282c34; 
   color:rgb(245, 245, 245);
+  align-items: center;
+  padding: 5rem auto;
 }
 
 .exchange {
   background-color: #282c34;
   align-items: center;
-  margin: 5rem auto;
+  
 }
+
+.exchange-title-info {
+  margin-top: 2rem;
+  background: #303e46;
+}
+
+.title-exchange {
+  background: #303e46;
+}
+
+.exchange-map {
+  display: flex;
+  flex-direction: column;
+}
+
 
 .ticker{
   overflow: hidden;
@@ -38,13 +67,34 @@ h3 {
   
 }
 
+.table-ticker-div {
+  display: flex;
+  justify-content: space-around;
+}
+
 .title-table{
   padding: 5px;
   background-color: rgb(45, 57, 65);
 }
 
+.title-ticker{
+  margin-bottom: 0rem;
+}
+
+.ticker-company{
+  font-size: 0.8rem;
+}
+
+.country {
+  margin: 0 0 1rem 0;
+}
+
 .exchange_info {
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 0.35rem;
+
 }
 
 
@@ -59,7 +109,7 @@ h3 {
 
 .border-left{
   border-left:1px;
-  align-items: stretch;
+  align-items: center;
   align-content: center; 
 
 }

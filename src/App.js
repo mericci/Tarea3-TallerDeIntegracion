@@ -21,7 +21,10 @@ class App extends Component{
       small_updates: {},
       last_updates: {},
       total_volume: {},
-      all_exchange_volume: 0
+      all_exchange_volume: 0,
+      buy_volume: {},
+      sell_volume: {},
+      exchange_volume: {}
 
     };    
   }
@@ -41,6 +44,7 @@ class App extends Component{
         socket.on('STOCKS', (stocks_info) => {
           const exchange_info = Object.entries(data).map(([key,value])=>{return(value)});
           exchange_info.map(exchange => {
+            this.setState({exchange_volume: {[exchange.name]: 0, ...this.state.exchange_volume}})
             exchange.listed_companies.map(comp => {
               stocks_info.map(stock => {
                 if(comp === stock.company_name) {
@@ -58,9 +62,13 @@ class App extends Component{
                 stocks: 
                   value.listed_companies.map(company => {
                     var tick = '';
+                    var money = '';
+                    var country = '';
                     stocks_info.map(stock => {
                       if (company === stock.company_name){
                         tick = stock.ticker;
+                        money = stock.quote_base;
+                        country = stock.country
                       }
                     })
                     return {
@@ -70,6 +78,8 @@ class App extends Component{
                       buy: [],
                       sell: [],
                       ticker: tick,
+                      money: money,
+                      country: country
           
                     }
                   }),
@@ -80,17 +90,24 @@ class App extends Component{
           });
         
           stocks_info.map(stock => {
-            this.setState({big_updates: {[stock.ticker]: 0, ...this.state.big_updates}})
-            this.setState({small_updates: {[stock.ticker]: Infinity, ...this.state.small_updates}})
-            this.setState({last_updates: {[stock.ticker]: 0, ...this.state.last_updates}})
-            this.setState({total_volume: {[stock.ticker]: 0, ...this.state.total_volume}})
+            this.setState({
+              big_updates: {[stock.ticker]: 0, ...this.state.big_updates},
+              small_updates: {[stock.ticker]: Infinity, ...this.state.small_updates},
+              last_updates: {[stock.ticker]: 0, ...this.state.last_updates},
+              total_volume: {[stock.ticker]: 0, ...this.state.total_volume},
+              buy_volume: {[stock.ticker]: 0, ...this.state.buy_volume},
+              sell_volume: {[stock.ticker]: 0, ...this.state.sell_volume},
+            })
           })
+          //console.log(this.state.total_volume)
+
+        
           
         
         
         });
       });
-
+      
       socket.on('UPDATE', (data) => {
         var exchange_input = this.state.stock_exchange[data.ticker];
         this.state.exchanges.map(exchange => {
@@ -124,8 +141,13 @@ class App extends Component{
       });
 
       socket.on('BUY', (data) => {
-        this.state.all_exchange_volume += data.volume;
+        var exchange_input = this.state.stock_exchange[data.ticker];
+        
+        if(isNaN(this.state.total_volume[data.ticker])){
+          this.state.total_volume[data.ticker] = 0;
+        }
         this.state.total_volume[data.ticker] += data.volume;
+        this.state.buy_volume[data.ticker] += data.volume;
         var exchange_input = this.state.stock_exchange[data.ticker];
         this.state.exchanges.map(exchange => {
           if(exchange.name === exchange_input) {
@@ -134,12 +156,19 @@ class App extends Component{
             }
           }
         });
+        this.state.exchange_volume[exchange_input] += data.volume;
+        this.state.all_exchange_volume += data.volume;
       
       });
 
       socket.on('SELL', (data) => {
-        this.state.all_exchange_volume += data.volume;
+        var exchange_input = this.state.stock_exchange[data.ticker];
+      
+        if(isNaN(this.state.total_volume[data.ticker])){
+          this.state.total_volume[data.ticker] = 0;
+        }
         this.state.total_volume[data.ticker] += data.volume;
+        this.state.sell_volume[data.ticker] += data.volume;
         var exchange_input = this.state.stock_exchange[data.ticker];
         this.state.exchanges.map(exchange => {
           if(exchange.name === exchange_input) {
@@ -148,8 +177,15 @@ class App extends Component{
         
           }
         );
+        this.state.exchange_volume[exchange_input] += data.volume;
+        this.state.all_exchange_volume += data.volume;
       });
       
+  }
+
+  wait_funct = () => {
+    for(var i= 0; i< 1000; i++){
+    }
   }
 
 
@@ -158,6 +194,7 @@ class App extends Component{
     return(
       <div className="App">
           {this.state.exchanges.map(exchange => {
+            this.wait_funct()
             return(
               <div className="exchange" key={exchange.name}>
                 <ExchangeDetail
@@ -169,6 +206,9 @@ class App extends Component{
                   lasts = {this.state.last_updates}
                   volume = {this.state.total_volume}
                   total_volume = {this.state.all_exchange_volume}
+                  buy_volume = {this.state.buy_volume}
+                  sell_volume = {this.state.sell_volume}
+                  exchange_volume = {this.state.exchange_volume[exchange.name]}
                 />
               </div>
             )

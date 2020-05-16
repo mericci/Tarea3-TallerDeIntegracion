@@ -27,55 +27,49 @@ class ExchangeDetail extends Component {
     // }
 
     // componentDidUpdate(prevProps){
-    //     if (this.props.volume !== prevProps.volume) {
-    //         this.setState({
-    //             buy_volume: this.props.exchange.buy_volume,
-    //             sell_volume: this.props.exchange.sell_volume,
-    //             total_volume: this.props.exchange.buy_volume + this.props.exchange.sell_volume,
-    //             actions_count: this.props.exchange.stocks.length,
-    //         })
-    //         this.setState({
-    //             participation: Math.round((this.state.total_volume/this.props.total_volume)*10000)/100
-    //         })
-    
+    //     if (this.props.buy_sell) {
+           
+    //         console.log(this.props.exchange.buy_volume + this.props.exchange.sell_volume)
     //     }
 
     // }
     
     render(){
         return (
-            <div>
-                <div className="col-md-12 row">
-                    <div className="col-md-6 border-right">
+            <div className="exchange-map">
+                <div className="row exchange-title-info">
+                    <div className="col-md-6 border-right title-exchange">
                         <h1>{this.props.exchange.name}</h1>
                     </div>
                     <div className="exchange_info col-md-6 border-left">
-                        <table>
-                            <tr>
-                                <th>Volumen de compra</th>
-                                <th>Volumen de venta</th>
-                                <th>Volumen total</th>
-                                <th>Cantidad de acciones</th>
-                                <th>Participación de mercado</th>
-        
-                            </tr>
-                            <tr>
-                                <th>{this.props.exchange.buy_volume}</th>
-                                <th>{this.props.exchange.sell_volume}</th>
-                                <th>{this.props.exchange.buy_volume + this.props.exchange.sell_volume}</th>
-                                <th>{this.props.exchange.stocks.length}</th>
-                                <th>{Math.round(((this.props.exchange.buy_volume + this.props.exchange.sell_volume)/this.props.total_volume)*10000)/100}</th>
-        
-                            </tr>
-                        </table>
-                        
+                        <div>
+                            <table className="exchange-table">
+                                <tr>
+                                    <th>Volumen de compra</th>
+                                    <th>Volumen de venta</th>
+                                    <th>Volumen total</th>
+                                    <th>Cantidad de acciones</th>
+                                    <th>Participación de mercado</th>
+            
+                                </tr>
+                                <tr>
+                                    <th>{this.props.exchange.buy_volume}</th>
+                                    <th>{this.props.exchange.sell_volume}</th>
+                                    <th>{this.props.exchange_volume}</th>
+                                    <th>{this.props.exchange.stocks.length}</th>
+                                    <th>{Math.round(((this.props.exchange_volume)/this.props.total_volume)*10000)/100}</th>
+            
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <table className="table-tickers">
+                <div className="table-ticker-div row">
+                    
                         {this.props.exchange.stocks.map(company => {
+                            //console.log(company.ticker)
                             return(
-                                
+                                <table className="table-tickers">
                                     <th>
                                         <TickerDetail
                                             key = {company.company}
@@ -85,12 +79,15 @@ class ExchangeDetail extends Component {
                                             small = {this.props.smalls[company.ticker]}
                                             last = {this.props.lasts[company.ticker]}
                                             volume = {this.props.volume[company.ticker]}
+                                            buy_volume = {this.props.buy_volume[company.ticker]}
+                                            sell_volume = {this.props.sell_volume[company.ticker]}
                                         /> 
                                     </th>
+                                </table>
                                 
                             )
                         })}
-                    </table>
+                    
                 </div>
             </div>
         );
