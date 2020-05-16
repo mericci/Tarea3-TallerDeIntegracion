@@ -7,6 +7,10 @@ import io from 'socket.io-client'
 
 const server = 'wss://le-18262636.bitzonte.com';
 
+const socket = io(server, {  
+  path: '/stocks'
+});
+
 class App extends Component{
 
   constructor(){
@@ -15,7 +19,7 @@ class App extends Component{
     this.state = {
       stock_exchange: {},
       exchanges: [],
-      is_loading: false,
+      is_loading: true,
       prueba: [],
       big_updates: {},
       small_updates: {},
@@ -24,19 +28,16 @@ class App extends Component{
       all_exchange_volume: 0,
       buy_volume: {},
       sell_volume: {},
-      exchange_volume: {}
+      exchange_volume: {},
+      button_text: 'Desconectar Socket'
 
     };    
   }
 
-  wait = () => {
-
-  }
-
   componentDidMount() {
-      const socket = io(server, {  
-        path: '/stocks'
-      });
+      // const socket = io(server, {  
+      //   path: '/stocks'
+      // });
      
       socket.emit('EXCHANGES')
       socket.on('EXCHANGES', (data) => {
@@ -183,18 +184,30 @@ class App extends Component{
       
   }
 
-  wait_funct = () => {
-    for(var i= 0; i< 1000; i++){
+  control_socket = () => {
+    if(socket.connected){
+      socket.disconnect()
+      this.setState({button_text: 'Reconectar Socket'})
+    }
+    else {
+      socket.connect()
+      this.setState({button_text: 'Desconectar Socket'});
     }
   }
 
-
+  
   
   render() {
+
+
+
     return(
       <div className="App">
+          <div className="socket-control">
+            <h2>Tarea 3 - Taller de Integración</h2>
+            <button className="button" onClick={this.control_socket}>{this.state.button_text}</button>
+          </div>
           {this.state.exchanges.map(exchange => {
-            this.wait_funct()
             return(
               <div className="exchange" key={exchange.name}>
                 <ExchangeDetail

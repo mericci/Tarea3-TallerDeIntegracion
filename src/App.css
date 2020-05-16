@@ -9,6 +9,31 @@ th, td {
   text-align: center;
 }
 
+.socket-control{
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(57, 60, 73);
+
+}  
+
+.button {
+  border-radius: 0.5rem;
+  padding: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: cornflowerblue;
+  border-style: solid;
+  color: azure;
+}
+
+.socket-control button:hover {
+  background: azure;
+  color:  cornflowerblue;
+  border-color:cornflowerblue;
+
+}
+
 .exchange-table{
   border: 1px solid rgba(221, 221, 221, 0.315);
   align-items: center;
@@ -68,8 +93,13 @@ th, td {
 }
 
 .table-ticker-div {
-  display: flex;
-  justify-content: space-around;
+  /* display: flex;
+  justify-content: space-around; */
+  width: 95vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2rem;
 }
 
 .title-table{

@@ -69,6 +69,7 @@ class ExchangeDetail extends Component {
                         {this.props.exchange.stocks.map(company => {
                             //console.log(company.ticker)
                             return(
+                                // <div className="table-ticker-div">
                                 <table className="table-tickers">
                                     <th>
                                         <TickerDetail
@@ -84,6 +85,7 @@ class ExchangeDetail extends Component {
                                         /> 
                                     </th>
                                 </table>
+                                //  </div>
                                 
                             )
                         })}
