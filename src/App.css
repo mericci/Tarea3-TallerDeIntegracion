@@ -1,6 +1,5 @@
 table, th, td {
   border: 1px solid rgba(221, 221, 221, 0.315);
-  align-items: center;
   /* border-collapse: collapse; */
 }
 
@@ -49,7 +48,7 @@ th, td {
   border: 1px transparent;
   margin-top: 1rem;
   margin-bottom: 3rem;
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
 }
 
 #root {
@@ -96,8 +95,8 @@ th, td {
   width: 95%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
 }
 
 .title-table{
