@@ -70,8 +70,8 @@ class ExchangeDetail extends Component {
                             //console.log(company.ticker)
                             return(
                                 // <div className="table-ticker-div">
-                                <table className="table-tickers">
-                                    <th>
+                                // <table className="table-tickers">
+                                    // <th>
                                         <TickerDetail
                                             key = {company.company}
                                             ticker = {company}
@@ -83,8 +83,8 @@ class ExchangeDetail extends Component {
                                             buy_volume = {this.props.buy_volume[company.ticker]}
                                             sell_volume = {this.props.sell_volume[company.ticker]}
                                         /> 
-                                    </th>
-                                </table>
+                                    // </th>
+                                // </table>
                                 //  </div>
                                 
                             )
