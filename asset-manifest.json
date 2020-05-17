@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Tarea3-TallerDeIntegracion/static/css/main.c496f170.chunk.css",
+    "main.css": "/Tarea3-TallerDeIntegracion/static/css/main.e42bdc84.chunk.css",
     "main.js": "/Tarea3-TallerDeIntegracion/static/js/main.7d3c4aaf.chunk.js",
     "main.js.map": "/Tarea3-TallerDeIntegracion/static/js/main.7d3c4aaf.chunk.js.map",
     "runtime-main.js": "/Tarea3-TallerDeIntegracion/static/js/runtime-main.74da41c6.js",
@@ -16,16 +16,16 @@
     "static/js/6.373e0087.chunk.js": "/Tarea3-TallerDeIntegracion/static/js/6.373e0087.chunk.js",
     "static/js/6.373e0087.chunk.js.map": "/Tarea3-TallerDeIntegracion/static/js/6.373e0087.chunk.js.map",
     "index.html": "/Tarea3-TallerDeIntegracion/index.html",
-    "precache-manifest.5886f2cff2c75011d7a09c4352de2d4f.js": "/Tarea3-TallerDeIntegracion/precache-manifest.5886f2cff2c75011d7a09c4352de2d4f.js",
+    "precache-manifest.0498bdeeaea9f28a447a2072b8b41df1.js": "/Tarea3-TallerDeIntegracion/precache-manifest.0498bdeeaea9f28a447a2072b8b41df1.js",
     "service-worker.js": "/Tarea3-TallerDeIntegracion/service-worker.js",
-    "static/css/main.c496f170.chunk.css.map": "/Tarea3-TallerDeIntegracion/static/css/main.c496f170.chunk.css.map",
+    "static/css/main.e42bdc84.chunk.css.map": "/Tarea3-TallerDeIntegracion/static/css/main.e42bdc84.chunk.css.map",
     "static/js/3.694db71d.chunk.js.LICENSE.txt": "/Tarea3-TallerDeIntegracion/static/js/3.694db71d.chunk.js.LICENSE.txt",
     "static/js/5.99b76492.chunk.js.LICENSE.txt": "/Tarea3-TallerDeIntegracion/static/js/5.99b76492.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.74da41c6.js",
     "static/js/3.694db71d.chunk.js",
-    "static/css/main.c496f170.chunk.css",
+    "static/css/main.e42bdc84.chunk.css",
     "static/js/main.7d3c4aaf.chunk.js"
   ]
 }
