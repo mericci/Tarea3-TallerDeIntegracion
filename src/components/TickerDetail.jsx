@@ -72,6 +72,7 @@ class TickerDetail extends Component {
                                     company = {this.props.ticker.company}
                                     prueba = {this.props.prueba}
                                     ticker = {this.props.ticker}
+                                    stock_data = {this.props.stock_data}
                                 />
                             </div>
                             <tr>

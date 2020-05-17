@@ -82,6 +82,7 @@ class ExchangeDetail extends Component {
                                             volume = {this.props.volume[company.ticker]}
                                             buy_volume = {this.props.buy_volume[company.ticker]}
                                             sell_volume = {this.props.sell_volume[company.ticker]}
+                                            stock_data = {this.props.stock_data[company.ticker]}
                                         /> 
                                     // </th>
                                 // </table>

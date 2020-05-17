@@ -21,7 +21,7 @@ class Chart extends Component {
     componentDidMount() {
         let chart = am4core.create(this.props.company, am4charts.XYChart);
         
-        chart.data = this.props.data;
+        chart.data = this.props.stock_data;
 
 
         let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
@@ -43,9 +43,10 @@ class Chart extends Component {
     };
 
     componentDidUpdate(prevProps) {
-
-        if (this.props.prueba !== prevProps.prueba) {
-            this.chart.data = this.props.data
+        console.log(this.props.stock_data)
+        console.log(prevProps.stock_data)
+        if (this.props.stock_data !== prevProps.stock_data) {
+            this.chart.data = this.props.stock_data
 
         }
     }
