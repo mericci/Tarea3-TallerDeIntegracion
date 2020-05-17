@@ -1,5 +1,12 @@
 
 th, td {
+  padding: 5px 2rem;
+  text-align: center;
+  border: 1px solid rgba(221, 221, 221, 0.315);
+  font-size: 1rem;
+}
+
+.th-info-exchange{
   padding: 5px;
   text-align: center;
   border: 1px solid rgba(221, 221, 221, 0.315);
@@ -45,7 +52,7 @@ th, td {
 .table-tickers {
   border: 1px transparent;
   margin-top: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 0rem;
   border-collapse: collapse;
 }
 
@@ -87,8 +94,10 @@ th, td {
   align-items: center;
   width: 100%;
   margin-top: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 0rem;
   border-color: transparent;
+  display: flex;
+  justify-content: space-around;
   
 }
 
@@ -96,7 +105,7 @@ th, td {
   width: 95%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
 }
 
@@ -111,6 +120,12 @@ th, td {
 
 .ticker-company{
   font-size: 0.8rem;
+}
+
+.company {
+  display: flex;
+  justify-content: space-around;
+  
 }
 
 .country {

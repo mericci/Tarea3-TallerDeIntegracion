@@ -21,7 +21,7 @@ class Chart extends Component {
     componentDidMount() {
         let chart = am4core.create(this.props.company, am4charts.XYChart);
         
-        chart.data = this.props.stock_data;
+        chart.data = [...this.props.stock_data];
 
 
         let dateAxis = chart.xAxes.push(new am4charts.DateAxis());

@@ -3,6 +3,16 @@ import './App.css';
 import ExchangeDetail from './components/ExchangeDetail';
 
 import io from 'socket.io-client'
+import * as am4core from "@amcharts/amcharts4/core";
+import * as am4charts from "@amcharts/amcharts4/charts";
+import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import am4themes_dark from "@amcharts/amcharts4/themes/dark";
+import {
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+} from 'recharts';
+
+am4core.useTheme(am4themes_dark);
+am4core.useTheme(am4themes_animated);
 
 
 const server = 'wss://le-18262636.bitzonte.com';
@@ -12,6 +22,7 @@ const socket = io(server, {
 });
 
 class App extends Component{
+  
 
   constructor(){
     super();
@@ -113,7 +124,9 @@ class App extends Component{
   
         let stocks_updates = {...this.state.stock_data}
         //console.log(data.ticker+ ' ' + stocks_updates[data.ticker])
-        stocks_updates[data.ticker].push({date: data.time, value: data.value })
+        var now = new Date();
+        stocks_updates[data.ticker].push({date: now.getHours() + ':0' + now.getMinutes() , value: data.value })
+        //console.log(stocks_updates[data.ticker])
         this.setState({stock_data: stocks_updates})
         //this.setState({stock_data: {[data.ticker]: this.state.stock_data[data.ticker].push({date: data.time, value: data.value }), ...this.state.stock_data}})
         this.state.exchanges.map(exchange => {
@@ -208,6 +221,7 @@ class App extends Component{
       this.setState({button_text: 'Desconectar Socket'});
     }
   }
+  
 
   
   
@@ -224,20 +238,98 @@ class App extends Component{
           {this.state.exchanges.map(exchange => {
             return(
               <div className="exchange" key={exchange.name}>
-                <ExchangeDetail
-                  key={exchange.name} 
-                  exchange = {exchange}
-                  prueba = {this.state.prueba}
-                  bigs = {this.state.big_updates}
-                  smalls = {this.state.small_updates}
-                  lasts = {this.state.last_updates}
-                  volume = {this.state.total_volume}
-                  total_volume = {this.state.all_exchange_volume}
-                  buy_volume = {this.state.buy_volume}
-                  sell_volume = {this.state.sell_volume}
-                  exchange_volume = {this.state.exchange_volume[exchange.name]}
-                  stock_data = {this.state.stock_data}
-                />
+              <div className="exchange-map">
+                <div className="row exchange-title-info">
+                    <div className="col-md-6 border-right title-exchange">
+                        <h1>{exchange.name}</h1>
+                    </div>
+                    <div className="exchange_info col-md-6 border-left">
+                        <div>
+                            <table className="exchange-table">
+                                <tr>
+                                    <th className="th-info-exchange">Volumen de compra</th>
+                                    <th className="th-info-exchange">Volumen de venta</th>
+                                    <th className="th-info-exchange">Volumen total</th>
+                                    <th className="th-info-exchange">Cantidad de acciones</th>
+                                    <th className="th-info-exchange">Participación de mercado</th>
+            
+                                </tr>
+                                <tr>
+                                    <th className="th-info-exchange">{exchange.buy_volume}</th>
+                                    <th className="th-info-exchange">{exchange.sell_volume}</th>
+                                    <th className="th-info-exchange">{this.state.exchange_volume[exchange.name]}</th>
+                                    <th className="th-info-exchange">{exchange.stocks.length}</th>
+                                    <th className="th-info-exchange">{Math.round(((this.state.exchange_volume[exchange.name])/this.state.all_exchange_volume)*10000)/100}</th>
+            
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div className="table-ticker-div">
+                    
+                        {exchange.stocks.map(company => {
+                            return(
+                              <div className="ticker">
+                              <div className="col-md-12 border-right company">
+                                  <table className="ticker-table">
+                                      <tr>
+                                          <div className='title-table'>
+                                              <h3 className="title-ticker">{company.company} <span className="ticker-company">({company.ticker})</span></h3>
+                                              <h5 className="country">{company.country}</h5>
+                                          </div>      
+                                      </tr>
+                                      <tr>
+                                          <div>
+                                           {console.log(this.state.stock_data[company.ticker])}
+                                           <div id="chart" >
+                                            <LineChart width={820} height={300} data={[...this.state.stock_data[company.ticker]]}>
+                                                
+                                                <XAxis dataKey="date" stroke="azure"/>
+                                                <YAxis stroke="azure" domain={["dataMin-10", "dataMax+10"]}/>
+                                                <Tooltip 
+                                                  formatter={
+                                                    function(value, name) {
+                                                      return company.money +': ' + value;
+                                                    }
+                                                    
+                                                  }
+                                                  labelFormatter={function(value) {
+                                                    return 'time: ' + value;
+                                                  }}
+                                                  
+                                                />
+                                                <Line type="monotone" dataKey="value" stroke="cornflowerblue" fill="cornflowerblue" strokeWidth={2} />
+                                            </LineChart>
+                                          </div>
+                                          </div>  
+                                          <tr>
+                                              <th>Volumen Total</th>
+                                              <th>Alto Histórico</th>
+                                              <th>Bajo Histórico</th>
+                                              <th>Último Precio</th>
+                                              <th>Variación (%)</th>
+                                          </tr>
+                                          <tr>
+                                              <th>{this.state.total_volume[company.ticker]}</th>
+                                              <th>{this.state.big_updates[company.ticker]}</th>
+                                              <th>{this.state.small_updates[company.ticker]}</th>
+                                              <th>{this.state.last_updates[company.ticker]}</th>
+                                              <th>0</th>
+                                          </tr>
+                                      </tr>
+                                      
+                                          
+                                  </table>
+                              </div>
+              
+                          </div>
+                                
+                            )
+                        })}
+                    
+                </div>
+            </div>
               </div>
             )
           })}
