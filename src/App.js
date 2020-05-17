@@ -35,6 +35,7 @@ class App extends Component{
       big_updates: {},
       small_updates: {},
       last_updates: {},
+      prev_last_updates: {},
       total_volume: {},
       all_exchange_volume: 0,
       buy_volume: {},
@@ -105,6 +106,7 @@ class App extends Component{
                 big_updates: {[stock.ticker]: 0, ...this.state.big_updates},
                 small_updates: {[stock.ticker]: Infinity, ...this.state.small_updates},
                 last_updates: {[stock.ticker]: 0, ...this.state.last_updates},
+                prev_last_updates: {[stock.ticker]: 0, ...this.state.prev_last_updates},
                 total_volume: {[stock.ticker]: 0, ...this.state.total_volume},
                 buy_volume: {[stock.ticker]: 0, ...this.state.buy_volume},
                 sell_volume: {[stock.ticker]: 0, ...this.state.sell_volume},
@@ -138,7 +140,7 @@ class App extends Component{
             })
           }
         });
-
+        this.state.prev_last_updates[data.ticker] = this.state.last_updates[data.ticker];
         this.state.last_updates[data.ticker] = data.value;
         if(data.value > this.state.big_updates[data.ticker]) {
           this.state.big_updates[data.ticker] = data.value;
@@ -299,7 +301,7 @@ class App extends Component{
                                                   }}
                                                   
                                                 />
-                                                <Line type="monotone" dataKey="value" stroke="cornflowerblue" fill="cornflowerblue" strokeWidth={2} />
+                                                <Line dataKey="value" stroke="cornflowerblue" fill="cornflowerblue" strokeWidth={2} />
                                             </LineChart>
                                           </div>
                                           </div>  
@@ -315,7 +317,14 @@ class App extends Component{
                                               <th>{this.state.big_updates[company.ticker]}</th>
                                               <th>{this.state.small_updates[company.ticker]}</th>
                                               <th>{this.state.last_updates[company.ticker]}</th>
-                                              <th>0</th>
+                                              {
+                                                this.state.prev_last_updates[company.ticker] !== 0 &&
+                                                <th>{Math.round(((this.state.last_updates[company.ticker]-this.state.prev_last_updates[company.ticker])/-this.state.prev_last_updates[company.ticker]*10000))/100}</th>
+                                              }
+                                              {
+                                                this.state.prev_last_updates[company.ticker] === 0 && <th>0</th>
+                                              }
+                                              
                                           </tr>
                                       </tr>
                                       
